@@ -22,7 +22,7 @@ module Parser
     card_array = []
     File.open(file, 'r')  do |file|
       file.each_line.each_slice(2) do |definition, answer|
-        card_array << {definition: definition, answer: answer}
+        card_array << Card.new({definition: definition, answer: answer})
       end
     end
     card_array
@@ -34,5 +34,5 @@ end
 
 #puts Parser.get_cards_from_file("flashcard_samples.txt")
 # card_info = {:definition => "Describe some crazy thing", :answer => "this is crazy"}
-# test_card = Card.new(card_info)
-# puts test_card
+test_card = Card.new(card_info)
+puts test_card
