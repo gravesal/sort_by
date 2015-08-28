@@ -23,3 +23,13 @@ end
 # card_info = {:definition => "Describe some crazy thing", :answer => "this is crazy"}
 # test_card = Card.new(card_info)
 # puts test_card
+
+class CardDeck
+  def initialize(deck = [])
+    @deck = deck
+  end
+
+  def create_card
+
+  end
+end
