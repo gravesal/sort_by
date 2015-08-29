@@ -87,22 +87,23 @@ user_input = gets.chomp
 
 if user_input == "Yes"
   play_game = Deck.new
-  # puts "I'm in Yes"
-  puts game_card = play_game.pull_card
-elsif
+else
   puts "See Ya!"
 end
-    user_guess = gets.chomp+("\n")
+
+puts game_card = play_game.pull_card
+user_guess = gets.chomp+("\n")
+
 while user_guess != "QUIT" || play_game.cards.length != 0
-    while game_card.is_correct?(user_guess) != true
-      puts("try again, please...")
-      user_guess = gets.chomp+("\n")
-    end
 
-    puts "That's correct"
-    play_game.discard
-    puts "Next Card!"
-    puts play_game.pull_card
+  while game_card.is_correct?(user_guess) != true
+    puts("try again, please...")
     user_guess = gets.chomp+("\n")
-
   end
+
+  puts "That's correct"
+  play_game.discard
+  puts "Next Card!"
+  puts game_card = play_game.pull_card
+  user_guess = gets.chomp+("\n")
+end
