@@ -1,4 +1,4 @@
-require_relative '../source/flashcards'
+require_relative 'flashcards'
 
 
 describe Card do
@@ -40,16 +40,17 @@ end
 
 describe Deck do
 
-  let(:our_deck) {Deck.new }
   describe '#initialize' do
+     let(:our_deck) { Deck.new}
     it 'should initialize as a kind of deck' do
       expect(our_deck).to be_a_kind_of(Deck)
     end
+  end
+
+  describe '#initialize' do
+    let(:your_deck) {CreateCard.create_card}
     it "should initialize as a kind of Array of hashes" do
-      expect(our_deck).to be_a_kind_of(Array)
+      expect(your_deck).to be_a_kind_of(Array)
     end
-    # it "it should have the proper attributes" do
-    #   expect(card).to have_attributes(:definition, :answer)
-    # end
   end
 end
