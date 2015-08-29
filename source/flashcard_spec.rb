@@ -1,4 +1,5 @@
 require_relative 'flashcards'
+require_relative 'parser'
 
 
 describe Card do
