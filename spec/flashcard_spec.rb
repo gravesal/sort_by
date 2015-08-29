@@ -40,7 +40,7 @@ end
 
 describe Deck do
 
-  let(:our_deck) { CreateCard.create_card}
+  let(:our_deck) {Deck.new }
   describe '#initialize' do
     it 'should initialize as a kind of deck' do
       expect(our_deck).to be_a_kind_of(Deck)
