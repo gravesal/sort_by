@@ -7,6 +7,7 @@ class Card
   def initialize(new_card = {})
     @definition = new_card[:definition]
     @answer = new_card[:answer]
+
   end
 
   def is_correct?(user_response)
@@ -18,16 +19,23 @@ class Card
   end
 
   def to_s
-    "#{definition}" #and #{answer}"
+     "#{definition}" #and #{answer}"
   end
 end
 
 class Deck
 
-  attr_reader :deck
-
+  attr_accessor :cards
   def initialize
-    @deck = CreateCard.create_card
+    @cards = CreateCard.create_card
+  end
+
+  def pull_card
+    pulled_card = @cards[@cards.length-1]
+  end
+
+  def discard
+    @cards.pop
   end
 
 end
@@ -63,3 +71,38 @@ module Parser
 end
 
 
+ #aces = Deck.new
+# puts
+ #p aces.discard
+# puts
+# p aces
+
+# CONTROLLER
+# GREET THEM
+
+puts "Hi, Welcome to the flashcard game! Wanna Play?! (Yes or No)"
+puts "Type Quit to quit"
+
+user_input = gets.chomp
+
+if user_input == "Yes"
+  play_game = Deck.new
+  # puts "I'm in Yes"
+  puts game_card = play_game.pull_card
+elsif
+  puts "See Ya!"
+end
+    user_guess = gets.chomp+("\n")
+while user_guess != "QUIT" || play_game.cards.length != 0
+    while game_card.is_correct?(user_guess) != true
+      puts("try again, please...")
+      user_guess = gets.chomp+("\n")
+    end
+
+    puts "That's correct"
+    play_game.discard
+    puts "Next Card!"
+    puts play_game.pull_card
+    user_guess = gets.chomp+("\n")
+
+  end
