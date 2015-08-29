@@ -94,11 +94,15 @@ end
 puts game_card = play_game.pull_card
 user_guess = gets.chomp+("\n")
 
-while user_guess != "QUIT" || play_game.cards.length != 0
+while user_guess != ("QUIT"+ "\n") || play_game.cards.length != 0
 
   while game_card.is_correct?(user_guess) != true
-    puts("try again, please...")
-    user_guess = gets.chomp+("\n")
+    if user_guess == ("QUIT"+ "\n")
+      abort ("Bye!!!")
+    else
+      puts "try again, please..."
+      user_guess = gets.chomp+("\n")
+    end
   end
 
   puts "That's correct"
