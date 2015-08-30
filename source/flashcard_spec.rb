@@ -1,4 +1,5 @@
-require_relative '../source/flashcards'
+require_relative 'flashcards'
+require_relative 'parser'
 
 
 describe Card do
@@ -40,41 +41,34 @@ end
 
 describe Deck do
 
-  let(:our_deck) {Deck.new }
   describe '#initialize' do
+    let(:our_deck) { Deck.new}
     it 'should initialize as a kind of deck' do
       expect(our_deck).to be_a_kind_of(Deck)
     end
+  end
+
+  describe '#initialize' do
+    let(:your_deck) {CreateCard.create_card}
     it "should initialize as a kind of Array of hashes" do
-      expect(our_deck).to be_a_kind_of(Array)
-    end
-    # it "it should have the proper attributes" do
-    #   expect(card).to have_attributes(:definition, :answer)
-    # end
-  end
-end
-
-
-describe CardDeck do
-  let(:card_deck){ CardDeck.new([])}
-
-  let(:deck){[Card.new(:definition => "Who are you", :answer => "not you")
-              Card.new(:definition => "Describe some crazy thing", :answer => "this is crazy")
-              Card.new(:definition => "what is ruby", :answer => "magical")
-              Card.new(:definition => "got methods", :answer => "yeah!")
-  ]
-
-  }
-
-  describe "#initialize" do
-    it "1. should initialize CardDeck objects" do
-      expect(card_deck).to be_a_kind_of(CardDeck)
+      expect(your_deck).to be_a_kind_of(Array)
     end
   end
 
-  describe "#shuffle" do
-    it "2. should shuffle array" do
-      expect(deck.last)..should_not eql(deck.last)
+  describe '#pull_card' do
+    let(:this_deck) { Deck.new }
+    it "should present a card/definition key to the user" do
+      expect(this_deck.pull_card).to be_a_kind_of(Card)
+    end
+  end
+
+  describe '#discard' do
+    let(:your_deck) { Deck.new }
+    it "should discard a card/definition key frm the card" do
+      expect{your_deck.discard}.to change {your_deck.cards.length}.from(38).to(37)
     end
   end
 end
+
+
+

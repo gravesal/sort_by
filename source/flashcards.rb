@@ -1,35 +1,43 @@
+require_relative 'parser'
+
 # Main file for
 class Card
   attr_reader :definition, :answer
 
-  def initialize(cards = {})
-    @definition = cards[:definition]
-    @answer = cards[:answer]
+  def initialize(new_card = {})
+    @definition = new_card[:definition]
+    @answer = new_card[:answer]
+
+  end
+
+  def is_correct?(user_response)
+    if user_response == @answer
+      true
+    else
+      false
+    end
   end
 
   def to_s
-    "#{definition} and #{answer}"
+     "#{definition}"
+  end
+end
+
+class Deck
+
+  attr_accessor :cards
+  def initialize
+    @cards = CreateCard.create_card
   end
 
-  # def create_card
-  #   Parser.get_cards_from_file("flashcard_samples.txt")
-  # end
+  def pull_card
+    pulled_card = @cards[@cards.length-1]
+  end
+
+  def discard
+    @cards.pop
+  end
+
 end
 
 
-#to_s method will
-
-#puts Parser.get_cards_from_file("flashcard_samples.txt")
-# card_info = {:definition => "Describe some crazy thing", :answer => "this is crazy"}
-# test_card = Card.new(card_info)
-# puts test_card
-
-class CardDeck
-  def initialize(deck = [])
-    @deck = deck
-  end
-
-  def create_card
-
-  end
-end
